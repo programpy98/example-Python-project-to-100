@@ -1,0 +1,43 @@
+import datetime
+import time
+
+# Function to simulate the "Calculating..." flashing effect
+def calculating_effect():
+    for _ in range(10):  # Run for 10 seconds
+        print("Calculating", end="")
+        for dots in range(1, 4):  # Print 1 to 3 dots
+            print("." * dots, end="\r")  # Overwrite the same line with dots
+            time.sleep(1)  # Wait for 1 second
+        print(" " * 12, end="\r")  # Clear the line before printing next
+
+# Function to simulate the "Processing..." flashing letters effect
+def processing_effect():
+    word = "Processing"
+    for _ in range(5):  # Run for 5 seconds
+        for i in range(len(word) + 1):  # Flash the letters one by one
+            print(word[:i], end="\r")  # Print a part of the word
+            time.sleep(0.5)  # Flash every 0.5 seconds
+        print(" " * len(word), end="\r")  # Clear the line
+
+# Get the current year
+current_year = datetime.datetime.now().year
+
+# Ask for user's name
+name = input("What's your name? ")
+
+# Simulate the delay with flashing "Calculating..."
+calculating_effect()
+
+# Ask for user's age
+age = int(input("\nHow old are you? "))  # '\n' moves to the next line after flashing effect
+
+# Simulate the 5-second delay with flashing "Processing..."
+processing_effect()
+
+# Calculate the year the user will turn 100
+years_to_100 = 100 - age
+year_turn_100 = current_year + years_to_100
+
+# Print a message
+print(f"Hello {name}, you will turn 100 years old in the year {year_turn_100}.")
+
